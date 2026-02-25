@@ -4,96 +4,79 @@ import random
 WIDTH = 800
 HEIGHT = 600
 
+state = "start"
 score = 0
-game_over = False
 
-class Player:
-    def __init__(self, x, y):
-        self.image = "happy"
-        self.x = x
-        self.y = y
-        self.width = 40
-        self.height = 40
+player = Actor('happy')
+alien = Actor('alien')
+cookie = Actor('cookie')
 
-class Enemy:
-    def __init__(self, x, y):
-        self.image = "alien"
-        self.x = x
-        self.y = y
-        self.width = 40
-        self.height = 40
-
-class Collectible:
-    def __init__(self, x, y):
-        self.image = "cookie"
-        self.x = x
-        self.y = y
-        self.width = 30
-        self.height = 30
-
-player = Player(WIDTH // 2, HEIGHT // 2)
-enemy = Enemy(100, 100)
-cookie = Collectible(300, 300)
+def reset_game():
+    global score
+    score = 0
+    player.pos = (WIDTH // 2, HEIGHT // 2)
+    alien.pos = (100, 100)
+    cookie.pos = (random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50))
 
 def update():
-    global score, game_over
-    
-    if game_over:
+    global state, score
+
+    if state != "playing":
         return
-    
-    # Move enemy toward player
-    if player.x > enemy.x:
-        enemy.x += 1
-    elif player.x < enemy.x:
-        enemy.x -= 1
-    
-    if player.y > enemy.y:
-        enemy.y += 1
-    elif player.y < enemy.y:
-        enemy.y -= 1
-    
-    # Check collision with enemy
-    if (abs(player.x - enemy.x) < 40 and 
-        abs(player.y - enemy.y) < 40):
-        game_over = True
-    
-    # Check collision with cookie
-    if (abs(player.x - cookie.x) < 40 and 
-        abs(player.y - cookie.y) < 40):
+
+    if keyboard.left:
+        player.x -= 4
+    if keyboard.right:
+        player.x += 4
+    if keyboard.up:
+        player.y -= 4
+    if keyboard.down:
+        player.y += 4
+
+    player.x = max(0, min(WIDTH, player.x))
+    player.y = max(0, min(HEIGHT, player.y))
+
+    if alien.x < player.x:
+        alien.x += 1
+    elif alien.x > player.x:
+        alien.x -= 1
+    if alien.y < player.y:
+        alien.y += 1
+    elif alien.y > player.y:
+        alien.y -= 1
+
+    if player.colliderect(cookie):
         score += 1
-        cookie.x = random.randint(0, WIDTH)
-        cookie.y = random.randint(0, HEIGHT)
+        cookie.pos = (random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50))
+
+    if player.colliderect(alien):
+        state = "game_over"
 
 def draw():
-    screen.clear((0, 0, 0))
-    screen.blit(player.image, (player.x, player.y))
-    screen.blit(enemy.image, (enemy.x, enemy.y))
-    screen.blit(cookie.image, (cookie.x, cookie.y))
-    
-    screen.draw.text(f"Score: {score}", (10, 10), color="white")
-    
-    if game_over:
-        screen.draw.text("GAME OVER", (WIDTH // 2 - 100, HEIGHT // 2), 
-                        color="red", fontsize=50)
+    screen.fill((0, 0, 0))
+
+    if state == "start":
+        # TODO: design a better start screen
+        screen.draw.text("Press SPACE to start", center=(WIDTH // 2, HEIGHT // 2), fontsize=30, color="white")
+
+    elif state == "playing":
+        player.draw()
+        alien.draw()
+        cookie.draw()
+        # TODO: improve score display (position, size, color, font)
+        screen.draw.text(f"Score: {score}", (10, 10), fontsize=24, color="white")
+
+    elif state == "game_over":
+        # TODO: design a better game over screen
+        screen.draw.text("Game Over", center=(WIDTH // 2, HEIGHT // 2), fontsize=40, color="red")
+        screen.draw.text("Press R to restart", center=(WIDTH // 2, HEIGHT // 2 + 60), fontsize=24, color="yellow")
 
 def on_key_down(key):
-    if key == keys.UP:
-        player.y -= 10
-    elif key == keys.DOWN:
-        player.y += 10
-    elif key == keys.LEFT:
-        player.x -= 10
-    elif key == keys.RIGHT:
-        player.x += 10
-    
-    # Wrap around screen
-    if player.x < 0:
-        player.x = WIDTH
-    elif player.x > WIDTH:
-        player.x = 0
-    if player.y < 0:
-        player.y = HEIGHT
-    elif player.y > HEIGHT:
-        player.y = 0
+    global state
+    if state == "start" and key == keys.SPACE:
+        reset_game()
+        state = "playing"
+    elif state == "game_over" and key == keys.R:
+        state = "start"
 
 pgzrun.go()
