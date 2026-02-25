@@ -1,0 +1,22 @@
+{
+	"theme": "light",
+	"scripts": [],
+	"lexikonTopic": "",
+	"suppressPageNumbering": true,
+	"useSubmitButtons": true,
+	"useMarkAsComplete": true,
+	"hideMenu": false,
+	"allowGuideClose": false,
+	"collapsedOnStart": false,
+	"hideSectionsToggle": false,
+	"hideBackToDashboard": false,
+	"protectLayout": false,
+	"title": "Designing Interfaces",
+	"order": [
+		"Get-Ready-c9a0",
+		"Try-It-Out-04dd",
+		"Change-It-1e56",
+		"Create-Your-Own-6e8e",
+		"Playtest-and-Reflect-288d"
+	]
+}

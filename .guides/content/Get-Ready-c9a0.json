@@ -1,0 +1,17 @@
+{
+	"id": "c9a0c48f-6065-4cb2-822d-e417ecbe2c1c",
+	"title": "Get Ready",
+	"files": [
+		{
+			"path": "#tabs",
+			"action": "close"
+		}
+	],
+	"path": [],
+	"contentType": "markdown",
+	"type": "page",
+	"teacherOnly": false,
+	"closeTerminalSession": true,
+	"learningObjectives": "",
+	"layout": "1-panel-tree"
+}
