@@ -1,14 +1,40 @@
 ## Try It Out
 
-Hit **Run** to start `interface.py`.
+**[ADD VIDEO URL — walkthrough of game code and how it works]**
 
-Play through the game once. Pay close attention to how it *feels* — especially the start screen, the score display, and the game over screen.
+In the terminal, type `python3 interface.py` and press Enter.
 
-**Be a critic:**
-- Start screen: Does it tell you what to do? What the game is about?
-- During play: Can you easily see your score? Is it in a useful place?
-- Game over: Is it clear? Satisfying? Does it feel like an ending?
+Play through the game. As the Riot video suggests — find the pain points.
 
-Make a list of at least **3 things** that could be improved.
+**Look at:**
+- **Start screen**: Does it tell you what to do? What the game is about?
+- **Score display**: Can you read it? Is it in the right place? Think about proximity and contrast.
+- **Game over**: Is it clear the game ended? Do you know what to do next?
 
-> *[TODO: insert free-text-auto assessment — "List at least 3 specific design problems you noticed in interface.py and what you would change about each."]*
+List at least **3 things** that could be improved.
+
+{Check It!|assessment}(free-text-auto-2573246848)
+
+---
+
+<details><summary>Optional: Make flapping feel more like real Flappy Bird</summary>
+
+Right now, holding SPACE makes the bird fly up continuously. In the real Flappy Bird, each tap gives one flap — you have to keep tapping.
+
+To get that feel, move the flap logic out of `update()` and into `on_key_down()`:
+
+**Remove this from `update()`:**
+```python
+    if keyboard.space:
+        bird.vy = FLAP
+```
+
+**Add this to `on_key_down()`:**
+```python
+    elif state == "playing" and key == keys.SPACE:
+        bird.vy = FLAP
+```
+
+The video explains why this works differently — `update()` checks every frame, but `on_key_down()` fires once per key press.
+
+</details>

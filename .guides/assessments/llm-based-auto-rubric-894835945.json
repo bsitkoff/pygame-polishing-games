@@ -1,0 +1,80 @@
+{
+	"type": "llm-based-auto-rubric",
+	"taskId": "llm-based-auto-rubric-894835945",
+	"source": {
+		"name": "create-your-own-rubric",
+		"showName": false,
+		"instructions": "Check your code!",
+		"metadata": {
+			"tags": [],
+			"files": [
+				"tryit.py"
+			],
+			"opened": [
+				{
+					"type": "file",
+					"panelNumber": 1,
+					"content": "tryit.py"
+				},
+				{
+					"type": "preview",
+					"panelNumber": 2,
+					"content": "https://{{domain3050}}/"
+				},
+				{
+					"type": "terminal",
+					"panelNumber": 3,
+					"content": ""
+				}
+			]
+		},
+		"bloomsObjectiveLevel": "",
+		"learningObjectives": "",
+		"guidance": "",
+		"showGuidanceAfterResponseOption": {
+			"type": "Never"
+		},
+		"maxAttemptsCount": 0,
+		"points": 5,
+		"arePartialPointsAllowed": true,
+		"rubrics": [
+			{
+				"id": "1",
+				"title": "Game Identity",
+				"description": "The game has a name and a theme that comes through in the text, colors, and overall feel. The start screen establishes what the game is about — it doesn't just say 'Press SPACE'.",
+				"points": 1
+			},
+			{
+				"id": "2",
+				"title": "Start Screen",
+				"description": "The start screen includes a game title, clear instructions for how to begin, and uses color and font size intentionally. A new player can tell what the game is and what to do.",
+				"points": 1
+			},
+			{
+				"id": "3",
+				"title": "Score Display",
+				"description": "The score is displayed during gameplay in a visible location with a readable font size and a color that contrasts with the background. It is labeled clearly (e.g., 'Score: 5' rather than just '5').",
+				"points": 1
+			},
+			{
+				"id": "4",
+				"title": "Game Over Screen",
+				"description": "The game over screen communicates that the game has ended, shows the final score, and tells the player how to restart. It fits the tone of the rest of the game.",
+				"points": 1
+			},
+			{
+				"id": "5",
+				"title": "Visual Consistency",
+				"description": "The game feels like a unified experience — colors, text sizes, and background work together across all screens. Design choices are consistent rather than random.",
+				"points": 1
+			}
+		],
+		"rubricsRequirements": "",
+		"solutions": [
+			{
+				"path": ".guides/secure/solution.py",
+				"content": "import pgzrun\nimport random\n\nWIDTH = 400\nHEIGHT = 600\n\nstate = \"start\"\nscore = 0\n\nGRAVITY = 0.3\nFLAP = -6.5\nGAP = 130\nSPEED = 3\n\nbird = Actor('bird1', (75, 300))\nbird.vy = 0\n\npipe_top = Actor('top', anchor=('left', 'bottom'))\npipe_bottom = Actor('bottom', anchor=('left', 'top'))\n\n\ndef reset_pipes():\n    gap_y = random.randint(200, HEIGHT - 200)\n    pipe_top.pos = (WIDTH, gap_y - GAP // 2)\n    pipe_bottom.pos = (WIDTH, gap_y + GAP // 2)\n\n\ndef reset_game():\n    global score\n    score = 0\n    bird.pos = (75, 300)\n    bird.vy = 0\n    reset_pipes()\n\n\ndef update():\n    global state, score\n\n    if state != \"playing\":\n        return\n\n    bird.vy += GRAVITY\n    bird.y += bird.vy\n\n    pipe_top.left -= SPEED\n    pipe_bottom.left -= SPEED\n\n    if pipe_top.right < 0:\n        reset_pipes()\n        score += 1\n\n    if bird.colliderect(pipe_top) or bird.colliderect(pipe_bottom):\n        state = \"game_over\"\n\n    if bird.y > HEIGHT or bird.y < 0:\n        state = \"game_over\"\n\n\ndef draw():\n    screen.fill((70, 180, 220))\n\n    if state == \"start\":\n        screen.draw.text(\"Flappy!\", center=(WIDTH // 2, HEIGHT // 3), fontsize=60, color=\"white\")\n        screen.draw.text(\"Tap SPACE to flap. Don't hit the pipes.\", center=(WIDTH // 2, HEIGHT // 2), fontsize=18, color=(255, 255, 255))\n        screen.draw.text(\"Press SPACE to start\", center=(WIDTH // 2, HEIGHT // 2 + 50), fontsize=22, color=\"yellow\")\n\n    elif state == \"playing\":\n        pipe_top.draw()\n        pipe_bottom.draw()\n        bird.draw()\n        screen.draw.text(str(score), center=(WIDTH // 2, 40), fontsize=50, color=\"white\")\n\n    elif state == \"game_over\":\n        screen.draw.text(\"Game Over!\", center=(WIDTH // 2, HEIGHT // 3), fontsize=50, color=\"white\")\n        screen.draw.text(f\"Score: {score}\", center=(WIDTH // 2, HEIGHT // 2), fontsize=36, color=\"yellow\")\n        screen.draw.text(\"Press R to try again\", center=(WIDTH // 2, HEIGHT // 2 + 50), fontsize=22, color=\"white\")\n\n\ndef on_key_down(key):\n    global state\n\n    if state == \"start\" and key == keys.SPACE:\n        reset_game()\n        state = \"playing\"\n\n    elif state == \"playing\" and key == keys.SPACE:\n        bird.vy = FLAP\n\n    elif state == \"game_over\" and key == keys.R:\n        state = \"start\"\n\n\npgzrun.go()\n"
+			}
+		]
+	}
+}

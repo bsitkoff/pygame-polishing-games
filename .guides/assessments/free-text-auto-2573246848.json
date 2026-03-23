@@ -1,0 +1,50 @@
+{
+	"type": "free-text-auto",
+	"taskId": "free-text-auto-2573246848",
+	"source": {
+		"name": "try-it-out-critique",
+		"showName": false,
+		"instructions": "List at least 3 specific design problems you noticed in interface.py and what you would change about each.",
+		"command": "python3 .guides/secure/freetext.py --question \"List at least 3 specific design problems you noticed in interface.py and what you would change about each.\" --use-llm",
+		"timeoutSeconds": 40,
+		"metadata": {
+			"tags": [
+				{
+					"name": "Assessment Type",
+					"value": "Free Text Autograde"
+				}
+			],
+			"files": [
+				"interface.py"
+			],
+			"opened": [
+				{
+					"type": "file",
+					"panelNumber": 1,
+					"content": "interface.py"
+				},
+				{
+					"type": "preview",
+					"panelNumber": 2,
+					"content": "https://{{domain3050}}/"
+				},
+				{
+					"type": "terminal",
+					"panelNumber": 3,
+					"content": ""
+				}
+			]
+		},
+		"bloomsObjectiveLevel": "",
+		"learningObjectives": "",
+		"guidance": "",
+		"showGuidanceAfterResponseOption": {
+			"type": "Never"
+		},
+		"maxAttemptsCount": 0,
+		"arePartialPointsAllowed": false,
+		"previewType": "NONE",
+		"points": 1,
+		"useMaximumScore": false
+	}
+}

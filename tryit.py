@@ -1,22 +1,37 @@
 import pgzrun
 import random
 
-WIDTH = 800
+WIDTH = 400
 HEIGHT = 600
 
 state = "start"
 score = 0
 
-player = Actor('happy')
-alien = Actor('alien')
-cookie = Actor('cookie')
+GRAVITY = 0.3
+FLAP = -6.5
+GAP = 130
+SPEED = 3
+
+bird = Actor('bird1', (75, 300))
+bird.vy = 0
+
+pipe_top = Actor('top', anchor=('left', 'bottom'))
+pipe_bottom = Actor('bottom', anchor=('left', 'top'))
+
+
+def reset_pipes():
+    gap_y = random.randint(200, HEIGHT - 200)
+    pipe_top.pos = (WIDTH, gap_y - GAP // 2)
+    pipe_bottom.pos = (WIDTH, gap_y + GAP // 2)
+
 
 def reset_game():
     global score
     score = 0
-    player.pos = (WIDTH // 2, HEIGHT // 2)
-    alien.pos = (100, 100)
-    cookie.pos = (random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50))
+    bird.pos = (75, 300)
+    bird.vy = 0
+    reset_pipes()
+
 
 def update():
     global state, score
@@ -24,59 +39,51 @@ def update():
     if state != "playing":
         return
 
-    if keyboard.left:
-        player.x -= 4
-    if keyboard.right:
-        player.x += 4
-    if keyboard.up:
-        player.y -= 4
-    if keyboard.down:
-        player.y += 4
+    if keyboard.space:
+        bird.vy = FLAP
 
-    player.x = max(0, min(WIDTH, player.x))
-    player.y = max(0, min(HEIGHT, player.y))
+    bird.vy += GRAVITY
+    bird.y += bird.vy
 
-    if alien.x < player.x:
-        alien.x += 1
-    elif alien.x > player.x:
-        alien.x -= 1
-    if alien.y < player.y:
-        alien.y += 1
-    elif alien.y > player.y:
-        alien.y -= 1
+    pipe_top.left -= SPEED
+    pipe_bottom.left -= SPEED
 
-    if player.colliderect(cookie):
+    if pipe_top.right < 0:
+        reset_pipes()
         score += 1
-        cookie.pos = (random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50))
 
-    if player.colliderect(alien):
+    if bird.colliderect(pipe_top) or bird.colliderect(pipe_bottom):
         state = "game_over"
+
+    if bird.y > HEIGHT or bird.y < 0:
+        state = "game_over"
+
 
 def draw():
     screen.fill((0, 0, 0))
 
     if state == "start":
-        # TODO: design a better start screen
-        screen.draw.text("Press SPACE to start", center=(WIDTH // 2, HEIGHT // 2), fontsize=30, color="white")
+        screen.draw.text("Press SPACE", center=(WIDTH // 2, HEIGHT // 2), fontsize=20, color="white")
 
     elif state == "playing":
-        player.draw()
-        alien.draw()
-        cookie.draw()
-        # TODO: improve score display (position, size, color, font)
-        screen.draw.text(f"Score: {score}", (10, 10), fontsize=24, color="white")
+        pipe_top.draw()
+        pipe_bottom.draw()
+        bird.draw()
+        screen.draw.text(str(score), (370, 570), fontsize=14, color="white")
 
     elif state == "game_over":
-        # TODO: design a better game over screen
-        screen.draw.text("Game Over", center=(WIDTH // 2, HEIGHT // 2), fontsize=40, color="red")
-        screen.draw.text("Press R to restart", center=(WIDTH // 2, HEIGHT // 2 + 60), fontsize=24, color="yellow")
+        screen.draw.text("Game Over", center=(WIDTH // 2, HEIGHT // 2), fontsize=30, color="white")
+
 
 def on_key_down(key):
     global state
+
     if state == "start" and key == keys.SPACE:
         reset_game()
         state = "playing"
+
     elif state == "game_over" and key == keys.R:
         state = "start"
+
 
 pgzrun.go()

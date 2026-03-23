@@ -1,0 +1,34 @@
+{
+	"type": "free-text-auto",
+	"taskId": "free-text-auto-3187358403",
+	"source": {
+		"name": "playtest-reflection",
+		"showName": false,
+		"instructions": "What did you observe when someone else played your game? What would you change based on watching them?",
+		"command": "python3 .guides/secure/freetext.py --question \"What did you observe when someone else played your game? What would you change based on watching them?\" --use-llm",
+		"timeoutSeconds": 40,
+		"metadata": {
+			"tags": [
+				{
+					"name": "Assessment Type",
+					"value": "Free Text Autograde"
+				}
+			],
+			"files": [
+				"tryit.py"
+			],
+			"opened": []
+		},
+		"bloomsObjectiveLevel": "",
+		"learningObjectives": "",
+		"guidance": "",
+		"showGuidanceAfterResponseOption": {
+			"type": "Never"
+		},
+		"maxAttemptsCount": 0,
+		"arePartialPointsAllowed": false,
+		"previewType": "NONE",
+		"points": 1,
+		"useMaximumScore": false
+	}
+}

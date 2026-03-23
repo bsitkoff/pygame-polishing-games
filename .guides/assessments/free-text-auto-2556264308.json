@@ -1,0 +1,50 @@
+{
+	"type": "free-text-auto",
+	"taskId": "free-text-auto-2556264308",
+	"source": {
+		"name": "change-it-reflection",
+		"showName": false,
+		"instructions": "Describe the design changes you made to interface.py. For each change, explain why it improves the player experience.",
+		"command": "python3 .guides/secure/freetext.py --question \"Describe the design changes you made to interface.py. For each change, explain why it improves the player experience.\" --use-llm",
+		"timeoutSeconds": 40,
+		"metadata": {
+			"tags": [
+				{
+					"name": "Assessment Type",
+					"value": "Free Text Autograde"
+				}
+			],
+			"files": [
+				"interface.py"
+			],
+			"opened": [
+				{
+					"type": "file",
+					"panelNumber": 1,
+					"content": "interface.py"
+				},
+				{
+					"type": "preview",
+					"panelNumber": 2,
+					"content": "https://{{domain3050}}/"
+				},
+				{
+					"type": "terminal",
+					"panelNumber": 3,
+					"content": ""
+				}
+			]
+		},
+		"bloomsObjectiveLevel": "",
+		"learningObjectives": "",
+		"guidance": "",
+		"showGuidanceAfterResponseOption": {
+			"type": "Never"
+		},
+		"maxAttemptsCount": 0,
+		"arePartialPointsAllowed": false,
+		"previewType": "NONE",
+		"points": 1,
+		"useMaximumScore": false
+	}
+}

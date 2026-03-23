@@ -1,13 +1,9 @@
 ## Get Ready
 
-*This is a design extension — no new code syntax to learn. The goal is to make your game feel better to play.*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sc3h5JXtIzw?si=I99PUw1jS2RlqNKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-You've got a working game. But does it look good? Does a new player know what to do? Does the score feel satisfying?
+A game can work perfectly and still feel bad to play. Professional game studios have entire teams dedicated to UI — the part of the game players actually see and interact with. As the video shows, good UI presents information so players can **intuitively understand and act on it** without thinking.
 
-Good game design isn't just about what works — it's about what *communicates*. Great games teach you the rules just by playing them.
+In this lesson, you'll start with a game that runs but has no identity. By the end, you'll use design to turn it into something that feels like *your* game.
 
-**Before you look at the example, think:**
-
-What's one thing about your current game that a new player might find confusing or annoying?
-
-> *[TODO: insert free-text-auto assessment — min 15 words — "What's one thing in your current game that might confuse a new player?"]*
+{Check It!|assessment}(free-text-auto-1269267441)

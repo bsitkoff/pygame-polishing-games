@@ -1,21 +1,15 @@
 ## Change It
 
-Now fix the problems you identified. Work in `interface.py`.
+Fix the problems you found. Work in `interface.py` — aim for at least 3:
 
-**Design goals — aim for at least 3:**
+1. **Start screen**: Add a title, instructions, and color.
+2. **Score display**: Make it visible — bigger font, better position, contrasting color.
+3. **Game over screen**: Show the final score. Make it readable.
+4. **Background**: Pick a color that makes sprites and text stand out.
+5. **Sprite sizing**: Are sprites a good size for the play area?
 
-1. **Start screen**: Add a title. Tell the player what to do (e.g., "Press SPACE to start"). Add color.
-2. **Score display**: Move it somewhere visible. Make the font bigger. Try a contrasting color.
-3. **Game over screen**: Show the final score. Make "Game Over" actually readable — size, color, placement.
-4. **Background**: Try a color that makes your sprites stand out. Or add a visual theme.
-5. **Sprite sizing**: Are sprites a comfortable size for the play area? Too big? Too small?
+Remember the video — consistency matters. Your colors, text sizes, and layout choices should feel like they belong to the same game.
 
----
+Save and run `python3 interface.py` to test your changes.
 
-**Design principle to keep in mind:**
-
-*The player should never have to wonder what to do next.* Every screen should answer: "What is this? What do I do?"
-
----
-
-> *[TODO: insert free-text-auto assessment — "Describe the design changes you made. For each change, explain WHY it improves the player experience."]*
+{Check It!|assessment}(free-text-auto-2556264308)
