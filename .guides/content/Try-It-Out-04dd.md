@@ -1,10 +1,10 @@
 ## Try It Out
 
-**[ADD VIDEO URL — walkthrough of game code and how it works]**
+> 📹 **[VIDEO NOT YET RECORDED — walkthrough of game code and how it works. Script at `.guides/secure/video-script-tryitout.md`]**
 
 In the terminal, type `python3 interface.py` and press Enter.
 
-Play through the game. As the Riot video suggests — find the pain points.
+Play through the game. As the Riot video on the Get Ready page suggests — find the pain points.
 
 **Look at:**
 - **Start screen**: Does it tell you what to do? What the game is about?

@@ -39,4 +39,4 @@ Show:
 2. **Gameplay** — what changed?
 3. **Game over** — what's your design intention?
 
-> *[TODO: set up Screencastify Submit assignment link here]*
+> *[SETUP NEEDED: Create a Screencastify Submit assignment and paste the link here]*
