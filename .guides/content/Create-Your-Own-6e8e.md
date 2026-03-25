@@ -1,8 +1,8 @@
 ## Create Your Own
 
-Open `tryit.py`. It's the same game as `interface.py`, but right now it has no personality. Your job is to use design to turn it into a game that feels like yours.
+Keep working in `interface.py`. You've fixed the worst problems — now give it a real identity.
 
-Give it a name. Pick a theme. Use color, text, and layout to create an identity — the code stays the same, but the experience should feel completely different.
+Give it a name. Pick a theme. Use color, text, and layout to create an identity — the code stays mostly the same, but the experience should feel completely different. Maybe you want to replace the bird sprite. Replacing the pipes is trickier because they have to fit together, but also possible.
 
 Think about what the video called the "ecosystem" — every screen should feel like it belongs to the same game.
 
@@ -12,7 +12,7 @@ Think about what the video called the "ecosystem" — every screen should feel l
 - Does game over fit the theme?
 - Does the background tie it all together?
 
-Save and run `python3 tryit.py` to test.
+Save and run `python3 interface.py` to test.
 
 ---
 
@@ -39,4 +39,4 @@ Show:
 2. **Gameplay** — what changed?
 3. **Game over** — what's your design intention?
 
-> *[SETUP NEEDED: Create a Screencastify Submit assignment and paste the link here]*
+[Record your video here.](https://app.screencastify.com/record/vcgyqkTfC8rWLfAQFan3U)

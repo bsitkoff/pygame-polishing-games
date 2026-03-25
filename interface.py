@@ -10,9 +10,9 @@ HEIGHT = 600
 state = "start"
 score = 0
 
-GRAVITY = 0.3
-FLAP = -6.5
-GAP = 130
+GRAVITY = 0.5
+FLAP = -6
+GAP = 140
 SPEED = 3
 
 bird = Actor('bird1', (75, 300))
@@ -38,6 +38,15 @@ def reset_game():
 
 def update():
     global state, score
+
+    if state == "start" and keyboard.space:
+        reset_game()
+        state = "playing"
+        return
+
+    if state == "game_over" and keyboard.r:
+        state = "start"
+        return
 
     if state != "playing":
         return
@@ -76,17 +85,6 @@ def draw():
 
     elif state == "game_over":
         screen.draw.text("OVER", center=(WIDTH // 2, HEIGHT // 2), fontsize=15, color="darkred")
-
-
-def on_key_down(key):
-    global state
-
-    if state == "start" and key == keys.SPACE:
-        reset_game()
-        state = "playing"
-
-    elif state == "game_over" and key == keys.R:
-        state = "start"
 
 
 pgzrun.go()

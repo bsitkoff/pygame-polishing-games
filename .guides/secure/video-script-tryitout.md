@@ -18,7 +18,9 @@ Highlight lines 7–11.
 
 Highlight lines 13–16.
 
-"These constants control the game physics. `GRAVITY` pulls the bird down, `FLAP` is how hard it jumps, `GAP` is the space between pipes, and `SPEED` is how fast the pipes move. You don't need to change these — but you can experiment with them later if you want."
+"These constants control the game physics. `GRAVITY` pulls the bird down every frame. `FLAP` is how hard it jumps — it's negative because up is negative in PyGame Zero. `GAP` is the space between the top and bottom pipes. And `SPEED` is how fast the pipes move toward you.
+
+These three values — `GRAVITY`, `FLAP`, and `GAP` — work together. If the game feels too hard, you can make `GRAVITY` smaller so you fall slower, make `FLAP` more negative so you jump higher, or make `GAP` bigger so there's more room between the pipes. If it's too easy, do the opposite. Tuning these is how real game designers adjust difficulty — small changes make a big difference. Try it."
 
 Highlight lines 18–22.
 
@@ -28,43 +30,45 @@ Highlight lines 18–22.
 
 "`reset_pipes` picks a random gap position and moves both pipes to the right edge. `reset_game` zeroes the score, puts the bird back in the middle, and resets the pipes. Same pattern as last time."
 
-## update (lines 39–59, ~45 sec)
+## update (lines 39–71, ~45 sec)
 
-"The `update` function — runs every frame. First line should look familiar: if we're not playing, do nothing."
+"The `update` function — runs every frame."
 
-Highlight lines 44–45.
+Highlight lines 42–49.
 
-"Here's the flap. If you're holding SPACE, the bird's velocity gets set to `FLAP`, which is negative — so the bird goes up. This should feel familiar — it's checking a key inside `update()`, same as arrow keys in the chase game."
+"First, it checks if you're on the start screen or game over screen. If you press SPACE on the start screen, it starts the game. If you press R on game over, it goes back to start. Same `keyboard.` pattern you've been using."
 
-Highlight lines 47–48.
+Highlight lines 51–52.
+
+"If we're not in any of those states and we're not playing, do nothing."
+
+Highlight lines 54–55.
+
+"Here's the flap. If you're holding SPACE, the bird's velocity gets set to `FLAP`, which is negative — so the bird goes up. Same pattern as arrow keys in the chase game."
+
+Highlight lines 57–58.
 
 "Every frame, gravity adds to the velocity, and the bird moves by that amount. So the bird is always falling unless you press SPACE."
 
-Highlight lines 50–53.
+Highlight lines 60–65.
 
 "Pipes slide left every frame. When they go off screen, they reset to a new random position and the score goes up."
 
-Highlight lines 55–59.
+Highlight lines 67–71.
 
 "Two ways to lose: hit a pipe, or fly off the top or bottom. Same `colliderect` you've used before."
 
-## draw (lines 62–75, ~10 sec)
+## draw (lines 74–87, ~10 sec)
 
 "The `draw` function — three states, three screens. I'll let you form your own opinions about how these look."
 
 **Don't linger. Don't read the text values. Move on.**
 
-## on_key_down (lines 78–89, ~10 sec)
-
-"`on_key_down` handles SPACE to start and R to restart. Same as before."
-
 ## Optional: on_key_down flap upgrade (~45 sec)
 
 "One more thing. Right now, holding SPACE makes the bird fly up continuously. Real Flappy Bird doesn't work that way — each tap gives you one flap.
 
-If you want that feel, there's an optional upgrade on the page. You move the flap check out of `update()` and into `on_key_down()`.
-
-The difference is: `update()` runs every single frame — so if you're holding the key, it fires over and over. `on_key_down()` only fires once, the moment you press the key. One tap, one flap.
+There's an optional upgrade on the page. You take the flap check out of `update()` and put it in a new function called `on_key_down()`. PyGame Zero calls that function once the moment a key is pressed — not every frame. So instead of holding SPACE to fly, you have to tap it each time. One tap, one flap.
 
 It's totally optional. The game works fine either way — it's just a different feel."
 
@@ -74,4 +78,4 @@ It's totally optional. The game works fine either way — it's just a different 
 
 ---
 
-**Total time**: ~3.5 minutes
+**Total time**: ~4 minutes

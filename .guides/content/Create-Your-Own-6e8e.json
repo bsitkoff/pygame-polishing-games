@@ -7,18 +7,18 @@
 			"action": "close"
 		},
 		{
-			"path": "tryit.py",
+			"path": "interface.py",
 			"panel": 1,
 			"action": "open"
 		},
 		{
 			"path": "#preview: https://{{domain3050}}/",
-			"panel": 2,
+			"panel": 0,
 			"action": "open"
 		},
 		{
 			"path": "#terminal: ",
-			"panel": 3,
+			"panel": 1,
 			"action": "open"
 		}
 	],
@@ -28,5 +28,5 @@
 	"teacherOnly": false,
 	"closeTerminalSession": true,
 	"learningObjectives": "",
-	"layout": "4-cell-guides-left"
+	"layout": "2-panels-guides-left"
 }

@@ -1,6 +1,15 @@
 ## Try It Out
 
-> 📹 **[VIDEO NOT YET RECORDED — walkthrough of game code and how it works. Script at `.guides/secure/video-script-tryitout.md`]**
+
+<iframe width="720" height="600"
+  src="https://app.screencastify.com/watch/RHi8u1Gvx8kW3Sv5CSqT/embed"
+  title="Codio - Extension: Polishing Games-1 - Screencastify - March 24, 2026 9:11 PM"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+  
 
 In the terminal, type `python3 interface.py` and press Enter.
 
@@ -21,20 +30,19 @@ List at least **3 things** that could be improved.
 
 Right now, holding SPACE makes the bird fly up continuously. In the real Flappy Bird, each tap gives one flap — you have to keep tapping.
 
-To get that feel, move the flap logic out of `update()` and into `on_key_down()`:
-
-**Remove this from `update()`:**
+To get that feel, **remove** the flap check from `update()`:
 ```python
     if keyboard.space:
         bird.vy = FLAP
 ```
 
-**Add this to `on_key_down()`:**
+And **add a new function** called `on_key_down()` that handles it instead:
 ```python
-    elif state == "playing" and key == keys.SPACE:
+def on_key_down(key):
+    if state == "playing" and key == keys.SPACE:
         bird.vy = FLAP
 ```
 
-The video explains why this works differently — `update()` checks every frame, but `on_key_down()` fires once per key press.
+Why does this work differently? `keyboard.space` in `update()` checks every frame — so if you're holding the key, it fires over and over. `on_key_down()` is a special PyGame Zero function that only fires once, the moment you press the key. One tap, one flap.
 
 </details>
