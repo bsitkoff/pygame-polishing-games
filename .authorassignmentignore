@@ -1,4 +1,4 @@
-# AI authoring artifacts — never share with students
+# AI authoring artifacts — never share with collaborating teachers
 CLAUDE.md
 .claude
 .cursor
@@ -13,8 +13,4 @@ AGENTS.md
 .github/copilot-instructions.md
 .codeium
 .tabnine
-# Common dev/build artifacts
-node_modules
-.DS_Store
-.env
 .gitignore

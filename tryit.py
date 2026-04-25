@@ -1,6 +1,9 @@
 import pgzrun
 import random
 
+# This game works — but the visual design has some problems.
+# Can you spot them? Can you fix them?
+
 WIDTH = 400
 HEIGHT = 600
 
@@ -69,23 +72,19 @@ def update():
 
 
 def draw():
-    screen.fill((70, 180, 220))
+    screen.fill((0, 0, 0))
 
     if state == "start":
-        screen.draw.text("Flappy!", center=(WIDTH // 2, HEIGHT // 3), fontsize=60, color="white")
-        screen.draw.text("Tap SPACE to flap. Don't hit the pipes.", center=(WIDTH // 2, HEIGHT // 2), fontsize=18, color=(255, 255, 255))
-        screen.draw.text("Press SPACE to start", center=(WIDTH // 2, HEIGHT // 2 + 50), fontsize=22, color="yellow")
+        screen.draw.text("SPACE", center=(WIDTH // 2, HEIGHT // 2), fontsize=20, color="gray")
 
     elif state == "playing":
         pipe_top.draw()
         pipe_bottom.draw()
         bird.draw()
-        screen.draw.text(f"Score: {score}", center=(WIDTH // 2, 40), fontsize=50, color="white")
+        screen.draw.text(f"{score}", (390, 590), fontsize=10, color="darkgray")
 
     elif state == "game_over":
-        screen.draw.text("Game Over!", center=(WIDTH // 2, HEIGHT // 3), fontsize=50, color="white")
-        screen.draw.text(f"Score: {score}", center=(WIDTH // 2, HEIGHT // 2), fontsize=36, color="yellow")
-        screen.draw.text("Press R to try again", center=(WIDTH // 2, HEIGHT // 2 + 50), fontsize=22, color="white")
+        screen.draw.text("OVER", center=(WIDTH // 2, HEIGHT // 2), fontsize=15, color="darkred")
 
 
 pgzrun.go()

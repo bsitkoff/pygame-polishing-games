@@ -20,8 +20,6 @@ Play through the game. As the Riot video on the Get Ready page suggests — find
 - **Score display**: Can you read it? Is it in the right place? Think about proximity and contrast.
 - **Game over**: Is it clear the game ended? Do you know what to do next?
 
-List at least **3 things** that could be improved.
-
 {Check It!|assessment}(free-text-auto-2573246848)
 
 ---

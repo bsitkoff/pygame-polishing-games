@@ -4,8 +4,8 @@
 	"source": {
 		"name": "create-your-own-reflection",
 		"showName": false,
-		"instructions": "Describe your design choices. What did you change in tryit.py and why?",
-		"command": "python3 .guides/secure/freetext.py --question \"Describe your design choices. What did you change in tryit.py and why?\" --use-llm",
+		"instructions": "Describe your design choices. What did you change and why?",
+		"command": "python3 .guides/secure/freetext.py --question \"Describe your design choices. What did you change and why?\" --use-llm",
 		"timeoutSeconds": 40,
 		"metadata": {
 			"tags": [

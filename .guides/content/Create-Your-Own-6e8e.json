@@ -7,7 +7,7 @@
 			"action": "close"
 		},
 		{
-			"path": "interface.py",
+			"path": "tryit.py",
 			"panel": 1,
 			"action": "open"
 		},

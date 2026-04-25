@@ -1,6 +1,6 @@
 ## Create Your Own
 
-Keep working in `interface.py`. You've fixed the worst problems — now give it a real identity.
+Open `tryit.py` — it's a fresh copy of the original game. You've seen the problems and practiced fixing them — now give it a real identity.
 
 Give it a name. Pick a theme. Use color, text, and layout to create an identity — the code stays mostly the same, but the experience should feel completely different. Maybe you want to replace the bird sprite. Replacing the pipes is trickier because they have to fit together, but also possible.
 
@@ -12,7 +12,7 @@ Think about what the video called the "ecosystem" — every screen should feel l
 - Does game over fit the theme?
 - Does the background tie it all together?
 
-Save and run `python3 interface.py` to test.
+Save and run `python3 tryit.py` to test.
 
 ---
 
@@ -23,8 +23,6 @@ Save and run `python3 interface.py` to test.
 ---
 
 ### Describe Your Design Choices
-
-What did you change and why?
 
 {Check It!|assessment}(free-text-auto-575052294)
 
